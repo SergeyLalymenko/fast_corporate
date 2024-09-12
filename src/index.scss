@@ -70,6 +70,37 @@
                 color: #2B2929;
             }
 
+            &__discount-box {
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                position: absolute;
+                top: -15px;
+                left: -15px;
+                width: 100px;
+                height: 102px;
+                background: url('./assets/img/discount.svg')no-repeat;
+                background-size: cover;
+            }
+
+            &__discount {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: "Bebas Neue", sans-serif;
+                font-size: 24px;
+                font-weight: 400;
+                color: #FFF;
+                transform: translate(20px, 10px) rotate(-45deg);
+                text-align: center;
+                line-height: 1;
+
+                span {
+                    font-family: "Roboto", sans-serif;
+                    font-size: 16px;
+                }
+            }
+
             &__price-box {
                 position: relative;
                 padding: 30px 10px 22px;
@@ -89,6 +120,15 @@
                 span {
                     font-size: 48px;
                 }
+            }
+
+            &__full-price {
+                position: absolute;
+                left: 50%;
+                bottom: 10px;
+                transform: translateX(-50%);
+                color: #929292;
+                text-decoration: line-through;
             }
 
             &__description {
@@ -125,12 +165,16 @@
         position: fixed;
         display: flex;
         flex-direction: column;
-        right: 3.8%;
-        top: 54px;
-        transform: translateX(50%);
         color: #FFF;
         text-align: center;
+        top: 10px;
         width: 140px;
+        transform: translateX(50%) scale(0);
+
+        &.active {
+            animation-duration: 5s;
+            animation-name: markerAnimation;
+        }
 
         &__triangle {
             width: 0;
@@ -157,7 +201,7 @@
     @media($media-3xl) {
         .marker {
             width: 100px;
-    
+
             &__triangle {
                 border-left: 50px solid transparent;
                 border-right: 50px solid transparent;
@@ -182,7 +226,7 @@
     @media($media-2xl) {
         .marker {
             width: 90px;
-    
+
             &__triangle {
                 border-left: 45px solid transparent;
                 border-right: 45px solid transparent;
@@ -205,7 +249,7 @@
 
         .marker {
             width: 70px;
-    
+
             &__triangle {
                 border-left: 35px solid transparent;
                 border-right: 35px solid transparent;
@@ -226,6 +270,22 @@
         }
     }
 
+    @media($media-lg) {
+        .marker {
+            width: 50px;
+
+            &__triangle {
+                border-left: 25px solid transparent;
+                border-right: 25px solid transparent;
+                border-bottom: 15px solid #3683F7;
+            }
+
+            &__title {
+                font-size: 28px;
+            }
+        }
+    }
+
     @media($media-md) {
         .products {
             margin: 60px 0 40px;
@@ -237,6 +297,28 @@
                     width: calc(100%);
                 }
             }
+        }
+
+        .marker {
+            display: none;
+        }
+    }
+
+    @keyframes markerAnimation {
+        from {
+            transform: translateX(50%) scale(0);
+        }
+
+        10% {
+            transform: translateX(50%) scale(1);
+        }
+
+        90% {
+            transform: translateX(50%) scale(1);
+        }
+        
+        to {
+            transform: translateX(50%) scale(0);
         }
     }
 }
