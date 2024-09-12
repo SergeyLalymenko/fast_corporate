@@ -11,7 +11,6 @@ async function fetchOffers() {
     try {
         const res = await fetch(API_URL);
         const { state, result: { title, elements: offers } } = await res.json();
-        console.log(offers);
         if (state !== 'ok') return;
 
         drawOffers(offers, title);
